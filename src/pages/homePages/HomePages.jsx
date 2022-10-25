@@ -1,26 +1,25 @@
 import React from "react";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import Card from "../../component/card/Card";
 import Loader from "../../component/loader/Loader";
 import Title from "../../component/title/Title";
 import css from "./HomePages.module.css";
 import { baseUrl } from "../../constanta";
+import { housesSliceAction } from "../../redux/housesSlice";
 
 function HomePages() {
-  const [isLoading, setLoading] = useState(true);
-  const [arr, setArr] = useState([]);
-
+  const { isLoading, data } = useSelector((state) => state.houses);
+  const dispatch = useDispatch()
   useEffect(() => {
     fetch(baseUrl)
-      .finally(() => {
-        setLoading(false);
-      })
+      .finally(() => {})
       .then((res) => {
+        
         return res.json();
       })
       .then((data) => {
-        setArr(data);
+        dispatch(housesSliceAction.setData(data));
       })
       .catch();
   }, []);
@@ -31,8 +30,8 @@ function HomePages() {
     <div className="page">
       <Title position="center">Все товары</Title>
       <div className={css.cardsWrapper}>
-        {arr.length ? (
-          arr.map((item, id) => {
+        {data.length ? (
+          data.map((item, id) => {
             return (
               <Card
                 key={id}

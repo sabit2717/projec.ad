@@ -4,18 +4,22 @@ import Card from "../../component/card/Card";
 import Loader from "../../component/loader/Loader";
 import Title from "../../component/title/Title";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-function Dashboard({ isLoading, arr }) {
+function Dashboard() {
+  const { isLoading, data } = useSelector((state) => state.houses);
   if (isLoading) {
     return <Loader />;
   }
   return (
     <div className="page">
       <Title position="center">Мои товары</Title>
-      <Link className="btn" to="/create-ad">Добавить товар</Link>
+      <Link className="btn" to="/create-ad">
+        Добавить товар
+      </Link>
       <div className={css.cardsWrapper}>
-        {arr.length ? (
-          arr.map((item, id) => {
+        {data.length ? (
+          data.map((item, id) => {
             return (
               <Card
                 key={id}

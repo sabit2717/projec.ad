@@ -1,11 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import { authSliceReducer } from "./authSlice";
+import { housesSliceReducer } from "./housesSlice";
 
 
 
 const reducers = combineReducers({
   auth: authSliceReducer,
-  houses: authSliceReducer
+  houses: housesSliceReducer
 });
 
 export const store = configureStore({
