@@ -1,15 +1,14 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Api from "../../api/Api";
-import { baseUrl } from "../../constanta";
+
 import css from "./Card.module.css";
 
 function Card(props) {
   const onDelete = () => {
     const res = window.confirm("Удалить");
     if (res) {
-      Api.deleteProjec(props.id)
-      .finally(() => {
+      Api.deleteProjec(props.id).finally(() => {
         window.location.reload();
       });
     }

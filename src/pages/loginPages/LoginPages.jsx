@@ -1,33 +1,38 @@
 import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+
 import Title from "../../component/title/Title";
+import { authSliceAction } from "../../redux/authSlice";
 import css from "./LoginPages.module.css";
 
 function LoginPages() {
   const [login, setLogin] = useState("");
   const [password, setPassword] = useState("");
-  const [logError, setLogError] = useState('')
+  const [logError, setLogError] = useState("");
 
-  const naviget = useNavigate()
+  const dispatch = useDispatch();
 
   const submit = (e) => {
     e.preventDefault();
-    if(login === 'admin' && password === 'admin') {
-      naviget('/dashboard')
-    }else{
-      setLogError(<h4 className={css.h1Error}>Логин или пароль был введен не правельно</h4>)
-    }  
-    
+    if (login === "admin" && password === "admin") {
+      dispatch(authSliceAction.setAuth(true));
+    } else {
+      setLogError(
+        <h4 className={css.h1Error}>
+          Логин или пароль был введен не правельно
+        </h4>
+      );
+    }
   };
   const loginChange = (e) => {
     setLogin(e.target.value);
-    setLogError('')
+    setLogError("");
   };
 
   const passwordChange = (e) => {
     setPassword(e.target.value);
-    setLogError('')
+    setLogError("");
   };
 
   return (

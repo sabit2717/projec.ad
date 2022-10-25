@@ -1,4 +1,4 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Header from "./component/header/Header";
 import HomePages from "./pages/homePages/HomePages";
@@ -8,12 +8,12 @@ import ErrorBlog from "./component/errorBlog/ErrorBlog";
 import LoginPages from "./pages/loginPages/LoginPages";
 import Dashboard from "./pages/dashboardPages/Dashboard";
 import { useEffect, useState } from "react";
-import { baseUrl } from "./constanta";
+
 import CreateAd from "./pages/createAd/CreateAd";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Api from "./api/Api";
-
+import {store} from './redux/index'
 
 function App() {
  

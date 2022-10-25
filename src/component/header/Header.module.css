@@ -36,7 +36,16 @@
     display: flex;
     grid-gap: 30px;
 }       
+.span{
+    margin-left: 27px;
+    color: #fff;
+    cursor: pointer;
 
+}
+.span:hover{
+    color: black;
+    transition: ease 0.5s;
+}
 
 
 
