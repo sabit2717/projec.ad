@@ -1,0 +1,28 @@
+.form {
+    margin-top: 50px;
+    display: grid;
+    grid-gap: 20px;
+    width: 500px;
+    align-items: center;
+    text-align: center;
+    margin: auto ;
+    margin-top: 5%;
+    
+}
+
+.input, .button {
+    font-size: 22px;
+    padding: 10px;
+    border-radius: 15px;
+}
+.button{
+    cursor: pointer;
+    background-color: rgb(229, 145, 145);
+}
+.button:hover{
+    background: rgb(112, 211, 112);
+    
+}
+.h1Error{
+    color: red;
+}

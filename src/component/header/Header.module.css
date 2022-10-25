@@ -1,0 +1,46 @@
+.wrapper{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgb(47, 141, 218);
+    padding: 20px;
+    font-family: 'roboto', sans-serif;
+    font-weight: 600;
+}   
+.logoRolls{
+    font-size: 30px;
+    text-decoration: none;
+    color: #fff;
+    
+}
+.logoRolls:hover{
+    color: black;
+    transition: ease-in-out 0.5s;
+} 
+.logoRolls span:hover{
+    color: brown;
+    padding: 3px;
+    transition: ease-in-out 0.5s;
+}  
+
+.header a{
+    text-decoration: none;
+    color: #fff;
+    font-size: 18px;
+}
+.header a:hover{
+    color: black;
+    transition: ease 0.5s;
+}
+.header{
+    display: flex;
+    grid-gap: 30px;
+}       
+
+
+
+
+    
+
+ 
+
