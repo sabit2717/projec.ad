@@ -1,18 +1,18 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Input from "../../component/input/Input";
 import Title from "../../component/title/Title";
-import { baseUrl } from "../../constanta";
-import css from "./CreateAd.module.css";
-import { toast } from 'react-toastify';
+
+import { toast } from "react-toastify";
+import Api from "../../api/Api";
 
 function CreateAd() {
   const [title, setTitle] = useState("");
   const [price, setPrice] = useState("");
   const [text, setText] = useState("");
   const [image, setImage] = useState("");
-  const [isSending, setSending] = useState(false)
-  const naviget = useNavigate()
+  const [isSending, setSending] = useState(false);
+  const naviget = useNavigate();
   const titleChenge = (e) => {
     setTitle(e.target.value);
   };
@@ -28,34 +28,28 @@ function CreateAd() {
 
   const submit = (e) => {
     e.preventDefault();
-    setSending(true)
+    setSending(true);
    
-    fetch(baseUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        title: title,
-        price: price,
-        image: image,
-        text: text,
-      }),
-    }).then((res) => {
-      if(res.status === 201) {
-        toast.success('Товар успешно добавлен', {
-          theme: "colored"
-        })
-        naviget("/dashboard")
-      }else{
+    const data = {
+      title: title,
+      price: price,
+      image: image,
+      text: text,
+    };
+    Api.postProjec(data).then((res) => {
+      if (res.status === 201) {
+        toast.success("Товар успешно добавлен", {
+          theme: "colored",
+        });
+        naviget("/dashboard");
+      } else {
         toast.error("Error", {
-          theme: "colored"
-        })
-        setSending(false)
+          theme: "colored",
+        });
+        setSending(false);
       }
-    })
-  
-    
+    });
+
     setImage("");
     setText("");
     setPrice("");
@@ -98,8 +92,10 @@ function CreateAd() {
           type="text"
           required
         />
-        
-        <button disabled={isSending} className="btn">Создать</button>
+
+        <button disabled={isSending} className="btn">
+          Создать
+        </button>
       </form>
     </div>
   );

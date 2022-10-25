@@ -7,7 +7,8 @@ const http = axios.create({
 
 const Api = {
   getProjec: () => http.get(),
-  deleteProjec: (id) => http.delete("/" + id)
+  deleteProjec: (id) => http.delete("/" + id),
+  postProjec: (data) => http.post("/", data)
 };
 
 export default Api;
